@@ -125,6 +125,15 @@
       width: 540px;
       transition: all .4s ease;
     }
+    .menu-search > *{
+      transition: all .4s ease;
+    }
+    .fade.menu-search > span {
+      transform: translateX(24px);
+    }
+    .fade.menu-search > input {
+      transform: translateX(12px);
+    }
     .menu-search input {
       position: relative;
       background: transparent;
@@ -252,7 +261,18 @@
       opacity: 0;
       transition: all .4s ease;
     }
-
+    .black-screen{
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      transition: all .4s ease;
+      z-index: 10;
+      -webkit-backdrop-
+    }
 
     @keyframes colors {
       0% {transform: rotate(0deg);}
@@ -262,12 +282,19 @@
   <script type="text/javascript">
     $(document).ready(function () {
       $("a.icon-search").click(function () {
-        $(".menu-items").addClass("fade");
+        $(this).parent().toggleClass("fade");
+        $(".black-screen").addClass("fade");
+        // $(".menu-items").addClass("fade");
         setTimeout(function () {
           $(".menu-search, .menu-items").toggleClass("hidden");
         }, 500)
         setTimeout(function () {
-          $(".menu-search").removeClass("fade");
+          if($(".menu-search").hasClass("hidden")){
+            $(".menu-search").removeClass("fade");
+          }else {
+              $(".menu-search").removeClass("fade");
+              $(".black-screen").removeClass("fade");
+          }
         }, 600);
       })
     });
@@ -275,6 +302,7 @@
   </script>
   </head>
   <body>
+    <div class="black-screen hidden"></div>
     <nav>
       <div class="menu-items">
         <a href="javascript:void(0)" class="icon icon-logo"></a>
