@@ -4,7 +4,9 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mailtoharshit/San-Francisco-Font-/sanfrancisco.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title></title>
+
   <style media="screen">
     * {
       box-sizing: border-box;
@@ -185,7 +187,46 @@
       0% {transform: rotate(0deg);}
       100% {transform: rotate(360deg);}
     }
+    .icon{
+      display: block;
+      position: relative;
+      height: 44px;
+      width: 36px;
+      background-position: top center;
+      background-size: 16px 44px;
+      background-repeat: no-repeat;
+    }
+    .icon-logo{
+      background-image: url(img/logo.svg)
+    }
+    .icon-cart{
+      background-image: url(img/cart.svg)
+    }
+    .icon-search{
+      background-image: url(img/search.svg)
+    }
+    /* .cross{
+      display: block;
+      position: absolute;
+      width: 1px;
+      height:
+    } */
+    .hidden{
+      display: none;
+    }
+    .fade{
+      opacity: 0;
+    }
   </style>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("a.icon-search, .icon-close").click(function(){
+          $(".menu-search, .menu-items").toggleClass("hidden")
+        })
+      });
+    </script>
+
   </head>
   <body>
     <nav>
@@ -197,15 +238,12 @@
         <a href="#">Watch</a>
         <a href="#">TV</a>
         <a href="#">Music</a>
-        <!-- <a href="#">TV</a> -->
-
-
-<a href="#">Music</a>
         <a href="#">Support</a>
-        <a href="#">Search</a>
-        <a href="#">Cart</a>
-      </div>
-      <div class="menu-search">
+        <a href="#" class="icon icon-search"></a>
+        <a href="#" class="icon icon-cart"></a>
+
+      <div class="menu-search hidden fade">
+        <span class="icon icon-search"></span>
         <span></span> <input type="text" name="" value=""> <a href="#"></a>
       </div>
     </nav>
